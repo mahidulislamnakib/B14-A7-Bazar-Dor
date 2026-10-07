@@ -1,202 +1,108 @@
-# 💪 B14-A7-Bazar Dor
+# 🛒 বাজার দর (Bazar Dor) — দৈনন্দিন নিত্যপণ্যের বাজার দর প্ল্যাটফর্ম
+
+> **Programming Hero Batch 14 — Assignment 07**  
+> একটি আধুনিক, রেসপনসিভ ও নির্ভরযোগ্য বাজার মনিটরিং ওয়েব অ্যাপ্লিকেশন যা সারা দেশের বিভিন্ন আঞ্চলিক বাজারের নিত্যপ্রয়োজনীয় পণ্যের আপডেটেড মূল্য তালিকা ও তুলনামূলক চিত্র প্রদর্শন করে।
 
 ---
 
-## 📅 Deadline For 60 marks: 10 October | ⏱️11:59PM
-## 📅 Deadline For 50 marks: 11 October | ⏱️11:59PM
-## 📅 Deadline for 30 marks: Any time after 11 October 2026
+## 🌐 লাইভ ডেমো ও লিংক
+- **লাইভ ওয়েবসাইট লিংক:** [https://bazar-dor-ph14.vercel.app](https://bazar-dor-ph14.vercel.app) *(বা আপনার ডিপ্লয়মেন্ট লিংক)*
+- **গিটহাব রিপোজিটরি লিংক:** [https://github.com/ProgrammingHero1/B14-A7-Bazar-Dor](https://github.com/ProgrammingHero1/B14-A7-Bazar-Dor)
 
 ---
-# API's
 
-## BASE_URL_1: https://api.api-store.workers.dev/api/bazardor
-## BASE_URL_2: https://api.abcz.workers.dev/api/bazardor (alternative)
+## 🛠️ ব্যবহৃত প্রযুক্তিসমূহ (Technologies Used)
 
-Endpoints:  
-**All Products:**
+| প্রযুক্তি | ব্যবহারের উদ্দেশ্য |
+| :--- | :--- |
+| **Next.js 14 (App Router)** | ইউজার ইন্টারফেস তৈরি, সার্ভার-সাইড ডাটা ফেচিং এবং ডায়নামিক রাউটিং |
+| **React 18 & TypeScript** | কম্পোনেন্ট আর্কিটেকচার, স্ট্রং টাইপ-সেফটি এবং স্টেট ম্যানেজমেন্ট |
+| **Tailwind CSS** | কাস্টম আধুনিক ডিজাইন সিস্টেম, গ্লাস মরফিজম এবং সম্পূর্ণ রেসপনসিভ লেআউট |
+| **BetterAuth / Custom Auth** | ইমেইল/পাসওয়ার্ড, গুগল ও গিটহাব সোশ্যাল লগইন এবং প্রোফাইল আপডেট |
+| **React Hot Toast** | ইন্টারেক্টিভ ও নান্দনিক টোস্ট নোটিফিকেশন সিস্টেম |
+| **Lucide Icons** | পরিচ্ছন্ন ও আধুনিক ভেক্টর আইকন সেট |
+| **Hind Siliguri Font** | নিখুঁত ও দৃষ্টিনন্দন বাংলা টাইপোগ্রাফি |
+
+---
+
+## ✨ মূল ৫টি বৈশিষ্ট্য (Key Features)
+
+1. **🔴 লাইভ প্রাইস ট্র্যাকার (Price Marquee Ticker):**
+   - নেভবারের ঠিক নিচে ইনফিনিট স্ক্রলিং লাইভ টিক্কার স্ট্রিপ যা প্রতিটি পণ্যের বর্তমান মূল্য, একক ও মূল্য পরিবর্তনের শতাংশ (▲/▼) স্বয়ংক্রিয়ভাবে প্রদর্শন করে। হোভার করলে পজ হয়ে যায়।
+
+2. **⚖️ ট্রেন্ডিং প্রাইস সেকশন (Rising & Falling Price Trackers):**
+   - হোমপেজে **“আজ দাম বেড়েছে ▲”** (শীর্ষ ৬টি মূল্যবৃদ্ধির পণ্য) এবং **“আজ দাম কমেছে ▼”** (শীর্ষ ৬টি মূল্যহ্রাসের পণ্য) আলাদা কার্ড সেকশন হিসেবে সাজানো।
+
+3. **📊 সংখ্যাভিত্তিক সর্টিং ও বাংলা ফিল্টারিং (Challenge C1):**
+   - বাংলা সংখ্যামান ও ডিজিট যথাযথভাবে বিশ্লেষণ করে তিনটি ফিল্টারিং অপশন: `ডিফল্ট`, `দাম: কম থেকে বেশি`, এবং `দাম: বেশি থেকে কম` নিখুঁতভাবে কাজ করে।
+
+4. **🔒 সুরক্ষিত বিস্তারিত পাতা ও বাজারভিত্তিক বিশ্লেষণ (Protected Product Route):**
+   - পণ্যটির বিস্তারিত পাতা (`/product/[id]`) লগইন ছাড়া দেখা যাবে না। অননুমোদিত প্রবেশে টোস্ট অ্যালার্ট সহ স্বয়ংক্রিয় রিডাইরেক্ট করে। লগইনের পর সারা দেশের প্রধান বাজারগুলোর সর্বনিম্ন, গড় ও সর্বোচ্চ দামের সম্পূর্ণ বিবরণী দেখা যায়।
+
+5. **👤 প্রোফাইল আপডেট ফিচার (Challenge C3):**
+   - মাই প্রোফাইল (`/profile`) রুট থেকে তথ্য পরিবর্তন রুটে (`/profile/update`) গিয়ে ব্যবহারকারী তার নাম ও প্রোফাইল তথ্য পরিবর্তন ও সংরক্ষণ করতে পারেন এবং সঙ্গে সঙ্গে টোস্ট নোটিফিকেশন পান।
+
+---
+
+## 📁 প্রজেক্ট স্ট্রাকচার
+
 ```
-/products
+B14-A7-Bazar-Dor/
+├── public/                 # স্ট্যাটিক অ্যাসেটস ও ইমেজ
+│   ├── bazar-hero.png      # হিরো সেকশন ব্যানার
+│   └── logo-icon.png       # লোগো আইকন
+├── src/
+│   ├── app/
+│   │   ├── category/
+│   │   │   └── [slug]/     # বিভাগীয় পণ্য তালিকা ও সর্টিং
+│   │   ├── product/
+│   │   │   └── [id]/       # সুরক্ষিত পণ্যের বিস্তারিত ও বাজার দর
+│   │   ├── profile/
+│   │   │   ├── page.tsx    # ব্যবহারকারী প্রোফাইল
+│   │   │   └── update/     # তথ্য হালনাগাদ রুট (Challenge C3)
+│   │   ├── signin/         # সাইন ইন পেজ ও সোশ্যাল লগইন
+│   │   ├── signup/         # সাইন আপ পেজ
+│   │   ├── globals.css     # গ্লোবাল স্টাইল ও বাংলা ফন্ট
+│   │   ├── layout.tsx      # রুট লেআউট, নেভবার ও ফুটার
+│   │   ├── not-found.tsx   # কাস্টম ৪০৪ এরর পেজ
+│   │   └── page.tsx        # মূল হোম পেজ
+│   ├── components/         # পুনঃব্যবহারযোগ্য কম্পোনেন্টসমূহ
+│   ├── context/            # AuthContext স্টেট প্রোভাইডার
+│   ├── data/               # ফলব্যাক মক ডাটা
+│   ├── types/              # টাইপস্ক্রিপ্ট টাইপ ডেফিনেশন
+│   └── utils/              # বাংলা ডিজিট কনভার্টার ও এপিআই ফেচার
+└── README.md
 ```
 
-**Filter:**
-```
-/products?category=chal
-```    
-**Single Product:**
-```
-/products/1
-```
+---
 
-**Categories:**
-```
-/categories
-```    
+## 🚀 লোকাল সেটআপ ও রান করার নিয়ম
 
-**Single Category:**
-```
-/categories/chal
+১. **রিপোজিটরি ক্লোন করুন:**
+```bash
+git clone https://github.com/ProgrammingHero1/B14-A7-Bazar-Dor.git
+cd B14-A7-Bazar-Dor
 ```
 
----
+২. **প্যাকেজসমূহ ইনস্টল করুন:**
+```bash
+npm install
+```
 
-## 🐣 Basic Requirements (Must Do for Everyone)
-- Your app must work on all screen sizes — mobile, tablet, and desktop
-- Make at least 8 Git commits with clear, meaningful messages
-- Your app must run without any errors after deployment
-- Add a nice README.md file with your project name, description, technologies used, and features(minimum 5)
+৩. **ডেভেলপমেন্ট সার্ভার চালু করুন:**
+```bash
+npm run dev
+```
+ব্রাউজারে [http://localhost:3000](http://localhost:3000) ওপেন করুন।
 
----
-
-# 🔧 Main Requirements — 50 Marks
-
-
-### 1. 🔝 Navbar
-
-- Design the Navbar exactly like the Figma.
-- Put your logo on the left side: `🛒 বাজার দর` + Bangla date underneath.
-- Put your navigation links in a second row / middle — category links.
-- The active category link should look different (highlighted).
-- **Right-side auth buttons**: `সাইন ইন` + `সাইন আপ`. When logged in, show profile / sign-out instead.
-- **Price ticker (marquee) below navbar**: infinite scrolling strip showing `emoji + name + দাম টাকা/একক + ▲/▼ %` 
+৪. **প্রোডাকশন বিল্ড যাচাই করুন:**
+```bash
+npm run build
+npm run start
+```
 
 ---
 
-### 2. 🅱️ Hero / Banner
-
-- Eyebrow / small text
-- Main heading
-- Subtitle
-- A primary **CTA button**
-  - It scrolls the user down to the `#সব-পণ্য` section on the same page (an anchor link, not a route change).
-- A **banner/hero image** on the right side..
-
-
----
-
-### 3. ⚖️ The Product Sections (Home Page)
-
-- **Section A — “আজ দাম বেড়েছে ▲”**: Top 6 risers. 
-- **Section B — “আজ দাম কমেছে ▼”**: Top 6 fallers. 
-- **Section C — “সব পণ্য” with subtitle** .
-- Display all products from JSON data as cards in a **responsive grid** (3-4 cols on large screens, collapses on mobile). Must be responsive.
-- Each card must show:
-  - 📷 Emoji / illustration (e.g. `🍚 🫘 🫙 🥔 🧅 🌶️ 🐟 🍗 🥚 🫚 🧄`)
-  - 📛 Product name (e.g. “স্বর্ণমাছি চাল”, “মিনিকেট চাল”, “ইলিশ মাছ”, “পেঁয়াজ”)
-  - 🖇️ Unit line (e.g. `প্রতি কেজি`, `প্রতি লিটার`, `প্রতি ডজন`, `প্রতি পিস`)
-  - 🔴 Price row: label `আজকের দাম` + value (e.g. `১৪৮ টাকা`, `১,৮৫০ টাকা` — Bengali digits) + change badge `▲ ২.১% / ▼ ২.৯% / —০.০%` (green up, red down, gray flat)
-- 🧭 Clicking a card navigates the user to that product’s **Detail Page**.
-
----
-
-### 4. Product Details Page — Layout (`/product/[slug]`)
-
-**Protected route — requires login.**
-
-**Top — Summary:**
-- Emoji + Title
-- Subtitle/description (market summary line)
-- Category tags (e.g. `সবজি`, `চাল`)
-- Unit (`প্রতি কেজি / লিটার / ডজন / পিস`)
-
-
-**Price - Summary** 
-- Minimum Price
-- Maximum Price 
-- Average Price 
-
-
-**বাজারভিত্তিক আজকের দাম** 
-- Show all the data like figma based on different Bazar. You can do this section Design like figma or as you want. 
-
-
-### 5. Category Page
-- Title + icon 
-- **Sort control**: `সাজান: ডিফল্ট | দাম: কম থেকে বেশি | দাম: বেশি থেকে কম` (see C1).
-- **Loading state**: show skeleton / “Loading…” while fetching before the list renders.
-- **Product cards list**: same card design as Home (thumbnail emoji, title e.g. “আলু”, “পেঁয়াজ”, “ঢেঁড়স”, unit e.g. “প্রতি কেজি”, price + change badge).
-- **Empty state** (when category has no items / invalid slug): 404-style message + CTA button **“হোম পেজে ফিরে যান”** (links back to `/`).
-
-
-### 6. Authentication (`/signin`, `/signup`)
-
-- **Sign In**: User Login: The user will  show  a Login page with a form , so that the user can Log in this application. 
-    - Show a Title for Login.  & Form with following fields ( Email , Password , Login button ) 
-    - If the user Login successfully then navigate him to his Home page. If not, show him an error with toast / error message anywhere in the form.
-
-    - There will be some other options like:
-        - Show the user a Link for Register  so that he can go to the register page. 
-        - Show users a Social Login Button ( Google/GitHub/any other social login ) . on Clicking it user authenticate with Google Navigate him to  his Home page.
-- **Sign Up**: User Registration: Create a register page with a form , so that the user can register himself in this application. 
-    - Show a Title for registration and a Form with following fields( Name , Email, Password & Register Button ) 
-    - If the user Register successfully then navigate him to his login page.
-    - If not, show him an error with toast / error message anywhere in the form.
-
-
-    - There will be some other options like 
-        - Show the user a Link for Login so that he can go to the Login page. 
-        - Show users a Social Login Button ( Google/GitHub/any other social login ) . on Clicking it user authenticate with Google Navigate the user to the Home page.
-
-- Use **BetterAuth** (email/password + Google + GitHub), toast on success/error, skeleton loaders.
-- Show relevant **toast notification** on login / signup / logout / validation error.
--  💡Don’t implement email verification or forget password method as it will inconvenience the examiner. If you want, you can add these after receiving the assignment result.
-
---- 
-
-### 7. Footer
-- Match the Figma.
-- **Left**: `বাজার দর — প্রয়োজনীয় পণ্যের দাম এক নজরে।`
-- **Right**: *“সকল দাম সম্ভাব্য; বাজার অবস্থার ওপর নির্ভর করে পরিবর্তিত হয়।”*
-
-### 8. Responsive Design
-- The entire website must work correctly on mobile, tablet, and desktop screen sizes (grid collapses correctly, navbar + ticker stays usable, hero stacks, `btn-sm sm:btn-md`, `max-w-6xl` container, etc.).
-
----
-
-#	Requirement
-- Add a 404 Page for any unknown/invalid route (e.g. `/category/invalid`, `/product/unknown` → friendly  404 + “হোম পেজে ফিরে যান”)
-- Show a loading animation ( `skeleton`) while the product data is being fetched on the Home / Category page
-- Show a relevant toast notification for auth + protected-route redirects (use `react-hot-toast` / `data-rht-toaster`).
-- Make sure reloading any page after deployment does not cause an error (dynamic `[slug]` routes must work on Vercel — no hard 404 on refresh)
-
----
-
-# Challenge Requirements — 10 Marks
-
-### C1. - **Sort dropdown**:
-“সাজান” → options `ডিফল্ট`, `দাম: কম থেকে বেশি`, `দাম: বেশি থেকে কম` (default `ডিফল্ট`, with chevron icon). Must handle Bengali numerals correctly (sort by numeric value, not string).
-
-### C2. GitHub README
-- Add a well-designed `README.md` that includes:
-  - Project name (বাজার দর / BazarDor)
-  - Short description
-  - Technologies used
-  - 5 key features of the project
-
-### C3. - Update Information Feature
-- In My Profile route there will be an update button. On clicking it,  Take user to another route 
-- Show user a form with an input field (  Name ), An Update Information button.
-
-Follow this documentation: https://better-auth.com/docs/concepts/users-accounts#update-user 
-
-
----
-
-### 🛠️ Technologies to Use
-Technology	Purpose
-- Next.js ->	Build the UI
-- App router(Next.js) +	Handle page navigation
-- Tailwind CSS + Any component library	Styling and responsiveness(DaisyUI, Hero UI)
-- TypeScript / JavaScript
-- BetterAuth
-
-### 🚀 Deployment
-Deploy your project on Vercel, Netlify, Cloudflare Pages, or anywhere else before submitting.
-
-## 📬 Submission
-Fill in both links before submitting:
-
-- Live Link:
-- GitHub Repository Link:
-
-
-### Notes : You can use Bengali or English language for core website information or any kind of text.
+## 👨‍💻 লেখক ও কৃতজ্ঞতা
+- প্রস্তুতকারী: **Programming Hero Batch 14 Student**
+- প্রজেক্ট নাম: **বাজার দর (Bazar Dor)**
