@@ -7,7 +7,7 @@
 
 ## 🌐 লাইভ ডেমো ও লিংক
 - **লাইভ ওয়েবসাইট লিংক:** [https://bazar-dor-ph14.vercel.app](https://bazar-dor-ph14.vercel.app) *(বা আপনার ডিপ্লয়মেন্ট লিংক)*
-- **গিটহাব রিপোজিটরি লিংক:** [https://github.com/ProgrammingHero1/B14-A7-Bazar-Dor](https://github.com/ProgrammingHero1/B14-A7-Bazar-Dor)
+- **গিটহাব রিপোজিটরি লিংক:** [https://github.com/mahidulislamnakib/B14-A7-Bazar-Dor](https://github.com/mahidulislamnakib/B14-A7-Bazar-Dor)
 
 ---
 
